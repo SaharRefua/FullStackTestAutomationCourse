@@ -1,6 +1,6 @@
 package Lesson04.exercise07;
 
-public class googleMap {
-
+public abstract class googleMap {
+   public abstract void goToEilat();
 
 }
