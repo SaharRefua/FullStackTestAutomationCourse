@@ -1,4 +1,4 @@
-package Lesson07_LocatorsBasic;
+package Lesson07_Locators;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -22,7 +22,33 @@ public class TestLocatorsBasic_part1 {
         driver.get("https://www.selenium.dev");
 
     }
-
+//    @Test
+//    public void test01VerifyLogo(){
+//        WebElement way1=driver.findElement(By.className("navbar-brand"));
+//        WebElement way2=driver.findElement(By.className("navbar-logo"));
+//        WebElement way3=driver.findElement(By.id("Layer_1"));
+//        WebElement way4=driver.findElement(By.tagName("svg"));
+//        System.out.println("Way1: "+way1);
+//        System.out.println("Way2: "+way2);
+//        System.out.println("Way3: "+way3);
+//        System.out.println("Way4: "+way4);
+//    }
+//    @Test
+//    public void test02VerifyTotalLinks(){
+//        List<WebElement> links= driver.findElements(By.tagName("a"));
+//        System.out.println("Total Links: "+links.size());
+//    }
+//    @Test
+//    public void test03VerifyLinksWithSeleniumUpper(){
+//        List<WebElement> linksWithSeleniumUpper=driver.findElements(By.partialLinkText("Selenium"));
+//        System.out.println("Total Links with - [Selenium] : "+linksWithSeleniumUpper.size());
+//    }
+//
+//    @Test
+//    public void test04VerifyLinksWithSeleniumLower(){
+//        List<WebElement> linksWithSeleniumLower=driver.findElements(By.partialLinkText("selenium"));
+//        System.out.println("Total Links with - [selenium] : "+linksWithSeleniumLower.size());
+//    }
     @Test
     public void test01_findElementByID() {
 
