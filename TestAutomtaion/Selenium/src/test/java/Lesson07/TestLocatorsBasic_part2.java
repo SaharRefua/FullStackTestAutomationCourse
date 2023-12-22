@@ -1,4 +1,4 @@
-package Lesson07_Locators;
+package Lesson07;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;

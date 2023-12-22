@@ -1,4 +1,4 @@
-package Lesson07_Locators;
+package Lesson07;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.List;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class TestLocatorsAdvance_Xpath_examples {
 

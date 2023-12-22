@@ -1,4 +1,4 @@
-package Lesson07_Locators;
+package Lesson07;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -8,9 +8,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class TestLocatorsAdvance_part1 {
     WebDriver driver;
