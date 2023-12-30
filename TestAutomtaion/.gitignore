@@ -34,5 +34,7 @@ build/
 ### VS Code ###
 .vscode/
 
+### Allure Report ###
+/allure-results
 ### Mac OS ###
 .DS_Store
