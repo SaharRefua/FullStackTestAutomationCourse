@@ -11,7 +11,8 @@ target/
 *.iws
 *.iml
 *.ipr
-
+*.avi
+*.json
 ### Eclipse ###
 .apt_generated
 .classpath
@@ -39,3 +40,10 @@ allure-results/
 /*/allure-results/
 ### Mac OS ###
 .DS_Store
+.allure
+.gradle
+schema
+build
+/*/allure-results/
+out
+.gradletasknamecache

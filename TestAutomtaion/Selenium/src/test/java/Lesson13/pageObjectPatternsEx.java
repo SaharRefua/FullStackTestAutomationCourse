@@ -6,9 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+
 import java.util.concurrent.TimeUnit;
 
 public class pageObjectPatternsEx {
@@ -17,8 +16,18 @@ public class pageObjectPatternsEx {
     formPage form;
     lastPage last;
 
+    @BeforeMethod
+    public void beforeMethod() throws Exception {
+        MonteScreenRecorder.startRecord("beforeMethod");
+    }
+
+    @AfterMethod
+    public void afterMethod() throws Exception {
+        MonteScreenRecorder.stopRecord();
+    }
+
     @BeforeClass
-    public void startSession() {
+    public void startSession() throws Exception {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -27,11 +36,15 @@ public class pageObjectPatternsEx {
         login = PageFactory.initElements(driver, loginPage.class);
         form = PageFactory.initElements(driver, formPage.class);
         last = PageFactory.initElements(driver, lastPage.class);
+
+
     }
+
     @AfterClass
-    public void closeSession() {
+    public void closeSession() throws Exception {
         Uninterruptibles.sleepUninterruptibly(6, TimeUnit.SECONDS);
         driver.quit();
+
     }
 
     @Test
@@ -42,6 +55,13 @@ public class pageObjectPatternsEx {
 
     }
 
+    @Test
+    public void test02() {
+        login.loginForm("seleniu", "webdriver");
+        form.fillForm("", "30", "Tel Aviv");
+        Assert.assertTrue(last.btn_clickMe.isDisplayed());
+
+    }
 
 
 }
