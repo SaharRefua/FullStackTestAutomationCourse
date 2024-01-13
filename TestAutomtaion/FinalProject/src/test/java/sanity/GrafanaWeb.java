@@ -18,12 +18,30 @@ public class GrafanaWeb extends CommonOps {
         Verifications.verifyTextInElement(grafanaMain.head_dashboard, "Dashboards");
 
     }
-//    @Test
-//    public void test02_verifyDefaultsUsers(){
-//        UIActions.click(grafanaLeftMenu.btn_menu);
-//        UIActions.mouseHover(grafanaLeftMenu.btn_server, grafanaServerAdmin.link_users);
-//        Uninterruptibles.sleepUninterruptibly(100, TimeUnit.SECONDS);
-//
-//
-//    }
+    @Test
+    public void test02_verifyDefaultsUsers(){
+        UIActions.click(grafanaLeftMenu.btn_menu);
+        UIActions.click(grafanaLeftMenu.btn_server);
+        UIActions.click(grafanaLeftMenu.btn_usersAndAccess);
+        UIActions.click(grafanaServerAdmin.link_users);
+        Verifications.numberOfElements(grafanaServerAdmin.rows, 1);
+    }
+
+    @Test
+    public void test03_verifyCreateNewUser(){
+        WebFlows.creatNewUser("Yossi", "yossi@gmail.com", "yossi", "12345");
+        Verifications.numberOfElements(grafanaServerAdmin.rows, 2);
+
+    }
+    @Test(enabled = false)
+    public void test04_verifyDeleteNewUser(){
+        WebFlows.deleteLastUser();
+        Verifications.numberOfElements(grafanaServerAdmin.rows, 1);
+
+    }
+    @Test
+    public void test05_verifyProgressSteps(){
+        Verifications.visibilityOfElements(grafanaMain.list_progressSteps);
+
+    }
 }

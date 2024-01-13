@@ -16,5 +16,20 @@ public class WebFlows extends CommonOps {
         UIActions.click(grafanaLogin.btn_skip);
 
     }
+    public static void creatNewUser(String name, String email, String user, String pass){
+        UIActions.click(grafanaServerAdmin.btn_newUser);
+        UIActions.updateText(grafanaAddNewUser.txt_name,name);
+        UIActions.updateText(grafanaAddNewUser.txt_email, email);
+        UIActions.updateText(grafanaAddNewUser.txt_password, pass);
+        UIActions.updateText(grafanaAddNewUser.txt_username, user);
+        UIActions.click(grafanaAddNewUser.btn_createUser);
+        UIActions.click(grafanaAddNewUser.btn_userHeaderLink);
+    }
+
+    public static void deleteLastUser(){
+        UIActions.click(grafanaServerAdmin.editUserLinks.get(grafanaServerAdmin.editUserLinks.size()-1));
+        UIActions.click(grafanaEditUser.btn_deleteUser);
+        UIActions.click(grafanaEditUser.btn_confirmDeleteUser);
+    }
 
 }

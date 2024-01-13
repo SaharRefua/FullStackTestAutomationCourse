@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Envirement>
+    <!-- Timeout -->
+    <Timeout>7</Timeout>
+
+    <!-- Web -->
+    <PlatformName>web</PlatformName>
+    <BrowserName>chrome</BrowserName>
+    <URL>http://localhost:3000</URL>
+</Envirement>
+
