@@ -111,6 +111,15 @@ public class CommonOps extends Base {
     public void closeSession() {
         driver.quit();
     }
+    @BeforeMethod
+    public void beforeMethod(Method method) {
+        try {
+            MonteScreenRecorder.startRecord(method.getName());
+        }
+        catch (Exception e ){
+            System.out.println("Failed to start vidoe recording " + method.getName());
 
+        }
+    }
 
 }

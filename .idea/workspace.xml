@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="27b5038d-93e1-405d-9fef-5e84f3e67d6d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TestAutomtaion/Selenium/src/test/java/Lesson_08_controllers/controllers_examples.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestAutomtaion/FinalProject/src/main/java/utilities/MonteScreenRecorder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestAutomtaion/FinalProject/src/main/java/utilities/CommonOps.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestAutomtaion/FinalProject/src/main/java/utilities/CommonOps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestAutomtaion/FinalProject/src/main/java/utilities/Listeners.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestAutomtaion/FinalProject/src/main/java/utilities/Listeners.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestAutomtaion/Selenium/src/test/java/Lesson13/ScreenRecorderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/TestAutomtaion/Selenium/src/test/java/Lesson13/ScreenRecorderTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +32,9 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2ZIrctwh64gBtkymVxXm1WyDULY" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -84,14 +91,22 @@
       <workItem from="1702640522586" duration="802000" />
       <workItem from="1702645617372" duration="1489000" />
       <workItem from="1702748166074" duration="21000" />
+      <workItem from="1705257409170" duration="729000" />
+      <workItem from="1705258152220" duration="1258000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="WfRunsListSearchHistory">{
-  &quot;history&quot;: [
+  <component name="WfRunsListSearchHistory"><![CDATA[{
+  "history": [
+    {
+    },
+    {
+    },
+    {
+    },
     {
     },
     {
@@ -99,7 +114,7 @@
     {
     }
   ],
-  &quot;lastFilter&quot;: {
+  "lastFilter": {
   }
-}</component>
+}]]></component>
 </project>

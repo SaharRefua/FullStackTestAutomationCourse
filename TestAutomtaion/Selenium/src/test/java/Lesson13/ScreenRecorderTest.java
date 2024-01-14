@@ -72,7 +72,7 @@ public class ScreenRecorderTest {
 //    @AfterMethod()
 //    public void afterMethod() {
 //        try {
-//            MonteScreenRecorder.stopRecord();
+//            MonteScreenRecorder.java.stopRecord();
 //        }
 //        catch (Exception e) {
 //            e.printStackTrace();
