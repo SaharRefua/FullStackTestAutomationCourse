@@ -7,5 +7,6 @@
     <PlatformName>web</PlatformName>
     <BrowserName>chrome</BrowserName>
     <URL>http://localhost:3000</URL>
+    <ImageRepo>./ImageRepository</ImageRepo>
 </Envirement>
 

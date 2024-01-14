@@ -9,19 +9,21 @@ import utilities.CommonOps;
 
 public class UIActions extends CommonOps {
 
-    //@Step("Click on element")
+    @Step("Click on element")
     public static void click(WebElement elem){
         wait.until(ExpectedConditions.elementToBeClickable(elem));
         elem.click();
     }
-
+    @Step("Update text element")
     public static void updateText(WebElement elem, String text){
         wait.until(ExpectedConditions.visibilityOf(elem));
         elem.sendKeys(text);
     }
+    @Step("Clear text element")
     public static void clearText(WebElement elem){
         elem.clear();
     }
+    @Step("Update drop down element")
     public static void updateDropDown(WebElement elem, String text){
         wait.until(ExpectedConditions.visibilityOf(elem));
         Select dropDown = new Select(elem);

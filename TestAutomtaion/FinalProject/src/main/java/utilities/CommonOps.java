@@ -9,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.sikuli.script.Screen;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.asserts.SoftAssert;
@@ -58,7 +59,6 @@ public class CommonOps extends Base {
 //        driver.manage().window().maximize();
         driver.manage().window().setPosition(new Point(0, 0));
         driver.manage().window().setSize(new Dimension(1920, 1080));
-        softAssert = new SoftAssert();
 //        driver.get("http://localhost:3000/");
         driver.get(getData("URL"));
         driver.manage().timeouts().implicitlyWait(Long.parseLong(getData("Timeout")), java.util.concurrent.TimeUnit.SECONDS);
@@ -103,6 +103,8 @@ public class CommonOps extends Base {
         else {
             throw new RuntimeException("Invalid platform name stated");
         }
+        softAssert = new SoftAssert();
+        screen = new Screen();
     }
 
     @AfterClass
