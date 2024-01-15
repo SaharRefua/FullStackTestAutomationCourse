@@ -7,6 +7,9 @@
     <PlatformName>web</PlatformName>
     <BrowserName>chrome</BrowserName>
     <URL>http://localhost:3000</URL>
-    <ImageRepo>./ImageRepository</ImageRepo>
+    <ImageRepo>/Users/sahar.refua/saharR/FullStackTestAutomationCourse/TestAutomtaion/ImageRepository/</ImageRepo>
+
+    <!-- Data driven testing -->
+    <DDT_CSV_File>/Users/sahar.refua/saharR/FullStackTestAutomationCourse/TestAutomtaion/DDTFiles/Users.csv/</DDT_CSV_File>
 </Envirement>
 

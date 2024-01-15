@@ -1,5 +1,6 @@
 package utilities;
 
+import Lesson13.MonteScreenRecorder;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
@@ -12,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.sikuli.script.Screen;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -20,6 +22,7 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
+import java.lang.reflect.Method;
 import java.time.Duration;
 
 
@@ -117,7 +120,7 @@ public class CommonOps extends Base {
             MonteScreenRecorder.startRecord(method.getName());
         }
         catch (Exception e ){
-            System.out.println("Failed to start vidoe recording " + method.getName());
+            System.out.println("Failed to start video recording " + method.getName());
 
         }
     }

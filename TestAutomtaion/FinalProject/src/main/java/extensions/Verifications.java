@@ -3,11 +3,12 @@ package extensions;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.sikuli.script.FindFailed;
 import utilities.CommonOps;
 
 import java.util.List;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
 public class Verifications  extends CommonOps {
     @Step("Verify Text in Element")
@@ -28,4 +29,24 @@ public class Verifications  extends CommonOps {
         }
         softAssert.assertAll("Some Elements were not displayed");
     }
+    @Step("Verify visibility Image Elements")
+    public static void visualElement(String expectedImageName) {
+        try{
+            screen.find(getData("ImageRepo") + expectedImageName + ".png");
+        } catch (Exception e) {
+            System.out.println("Error Comparing Image File: " + e);
+            fail();
+        }
+    }
+
+    @Step("Verify Element Displayed")
+    public static void existenceOfElement(List <WebElement> elems) {
+       assertTrue(elems.size() >0);
+    }
+
+    @Step("Verify Element Not Displayed")
+    public static void nonexistenceOfElement(List <WebElement> elems) {
+        assertFalse(elems.size() >0);
+    }
+
 }

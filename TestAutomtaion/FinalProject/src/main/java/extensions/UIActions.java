@@ -1,5 +1,6 @@
 package extensions;
 
+import com.google.common.util.concurrent.Uninterruptibles;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -17,6 +18,16 @@ public class UIActions extends CommonOps {
     @Step("Update text element")
     public static void updateText(WebElement elem, String text){
         wait.until(ExpectedConditions.visibilityOf(elem));
+        elem.sendKeys(text);
+    }
+
+    @Step("Update text element as human user")
+    public static void updateTextHuman(WebElement elem, String text){
+        wait.until(ExpectedConditions.visibilityOf(elem));
+        for (char ch : text.toCharArray()){
+            Uninterruptibles.sleepUninterruptibly(500, java.util.concurrent.TimeUnit.MILLISECONDS);
+            elem.sendKeys(ch + "");
+        }
         elem.sendKeys(text);
     }
     @Step("Clear text element")

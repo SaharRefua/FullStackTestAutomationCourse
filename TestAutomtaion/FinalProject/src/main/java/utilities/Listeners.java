@@ -1,11 +1,14 @@
 package utilities;
 
+import Lesson13.MonteScreenRecorder;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+
+import java.io.File;
 
 public class Listeners extends CommonOps implements ITestListener {
 
@@ -34,7 +37,7 @@ public class Listeners extends CommonOps implements ITestListener {
         }
 
         //Delete recorded file
-        File file = new File("./test-recording/"+ test.getName() +".avi");
+        File file = new File("./test-recordings/"+ test.getName() +".avi");
         if (file.delete()){
             System.out.println("Failed Deleted Successfully");
         }

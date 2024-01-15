@@ -22,5 +22,9 @@ public class ServerAdminPage {
 
     @FindBy(how = How.XPATH , using= "//a[href='/admin/settings']")
     public WebElement link_settings;
+    @FindBy(how = How.CSS , using= "input[class='css-8tk2dk-input-input']")
+    public WebElement txt_search;
+
+
 
 }
