@@ -13,6 +13,7 @@
         <module>JavaCourse</module>
         <module>JavaCourse</module>
         <module>FinalProject</module>
+        <module>Appium</module>
     </modules>
     <repositories>
         <repository>
