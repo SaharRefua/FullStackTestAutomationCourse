@@ -1,6 +1,9 @@
 package utilities;
 
 import Lesson13.MonteScreenRecorder;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.AndroidMobileCapabilityType;
+import io.appium.java_client.remote.MobileCapabilityType;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
@@ -23,7 +26,9 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.lang.reflect.Method;
+import java.net.URL;
 import java.time.Duration;
+import java.util.Objects;
 
 
 public class CommonOps extends Base {
@@ -58,7 +63,16 @@ public class CommonOps extends Base {
             throw new RuntimeException("Invalid Browser Type stated");
         }
         ManagePages.initGrafana();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(Long.parseLong(getData("Timeout"))));
+//        wait = new WebDriverWait(driver, Integer.parseInt(getData("Timeout")), java.util.concurrent.TimeUnit.SECONDS);
+        // Your long value representing timeout in seconds
+        long timeoutInSeconds = Long.parseLong(getData("Timeout"));
+
+        // Convert the long value to a Duration object
+        Duration timeoutDuration = Duration.ofSeconds(timeoutInSeconds);
+        // Convert Duration to long (milliseconds)
+        long durationInMillis = timeoutDuration.toMillis();
+        // Create WebDriverWait with the specified timeout
+        wait = new WebDriverWait(driver, durationInMillis);
 //        driver.manage().window().maximize();
         driver.manage().window().setPosition(new Point(0, 0));
         driver.manage().window().setSize(new Dimension(1920, 1080));
@@ -66,6 +80,31 @@ public class CommonOps extends Base {
         driver.get(getData("URL"));
         driver.manage().timeouts().implicitlyWait(Long.parseLong(getData("Timeout")), java.util.concurrent.TimeUnit.SECONDS);
         action = new Actions(driver);
+
+    }
+    public static  void initMobile(){
+        dc.setCapability(MobileCapabilityType.UDID,getData("UDID") );
+        dc.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, getData("AppPackage"));
+        dc.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, getData("AppActivity"));
+        try{
+//            mobileDriver = new AndroidDriver<>(new URL((getData("AppiumServer"))), dc);
+            mobileDriver = new AndroidDriver<> (new URL(getData("AppiumServer")), dc);
+        }
+        catch (Exception e){
+            System.out.println("Can not connect to Appium Server, see details: " + e);
+        }
+        ManagePages.initMortgage();
+
+        mobileDriver.manage().timeouts().implicitlyWait(Long.parseLong(Objects.requireNonNull(getData("Timeout"))), java.util.concurrent.TimeUnit.SECONDS);
+        // wait = new WebDriverWait(mobileDriver, Long.parseLong(getData("Timeout")));
+        // Your long value representing timeout in seconds
+        long timeoutInSeconds = Long.parseLong(getData("Timeout"));
+
+        // Convert the long value to a Duration object
+        Duration timeoutDuration = Duration.ofSeconds(timeoutInSeconds);
+        long durationInMillis = timeoutDuration.toMillis();
+        // Create WebDriverWait with the specified timeout
+        wait = new WebDriverWait(mobileDriver, durationInMillis);
 
     }
 
@@ -94,9 +133,9 @@ public class CommonOps extends Base {
         if (getData("PlatformName").equalsIgnoreCase("web")) {
             initBrowser("chrome");
         }
-//        else if (platform.equalsIgnoreCase("mobile")){
-//            initMobile();
-//        }
+        else if (getData("PlatformName").equalsIgnoreCase("mobile")){
+            initMobile();
+        }
 //        else if (platform.equalsIgnoreCase("electron")){
 //            initElectron();
 //        }
@@ -112,7 +151,11 @@ public class CommonOps extends Base {
 
     @AfterClass
     public void closeSession() {
-        driver.quit();
+        if (!getData("PlatformName").equalsIgnoreCase("web"))
+            driver.quit();
+        else
+            mobileDriver.quit();
+
     }
     @BeforeMethod
     public void beforeMethod(Method method) {
