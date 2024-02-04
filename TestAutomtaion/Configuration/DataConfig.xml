@@ -2,8 +2,10 @@
 <Envirement>
     <!-- Timeout -->
     <Timeout>7</Timeout>
-    <PlatformName>mobile</PlatformName>
-
+    <PlatformName>api</PlatformName>
+    <!-- Authorization -->
+    <UserName>admin</UserName>
+    <Password>admin</Password>
     <!-- Web -->
     <BrowserName>chrome</BrowserName>
     <URL>http://localhost:3000</URL>
@@ -19,6 +21,7 @@
     <AppiumServer>http://localhost:4723/wd/hub</AppiumServer>
 
     <!-- API -->
+    <urlAPI>http://localhost:3000</urlAPI>
 
 
 </Envirement>

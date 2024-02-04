@@ -5,6 +5,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.restassured.RestAssured;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
@@ -139,9 +140,9 @@ public class CommonOps extends Base {
 //        else if (platform.equalsIgnoreCase("electron")){
 //            initElectron();
 //        }
-//        else if (platform.equalsIgnoreCase("api")){
-//            initAPI();
-//        }
+        else if (getData("PlatformName").equalsIgnoreCase("api")){
+            initAPI();
+        }
         else {
             throw new RuntimeException("Invalid platform name stated");
         }
@@ -149,23 +150,32 @@ public class CommonOps extends Base {
         screen = new Screen();
     }
 
+    public static void initAPI(){
+        RestAssured.baseURI= getData("urlAPI");
+        httpRequest = RestAssured.given().auth().preemptive().basic(getData("UserName"),getData("Password"));
+    }
+
     @AfterClass
     public void closeSession() {
-        if (!getData("PlatformName").equalsIgnoreCase("web"))
-            driver.quit();
-        else
-            mobileDriver.quit();
-
+        if(!getData("PlatformName").equalsIgnoreCase("api")) {
+            if (!getData("PlatformName").equalsIgnoreCase("web"))
+                driver.quit();
+            else
+                mobileDriver.quit();
+        }
     }
     @BeforeMethod
     public void beforeMethod(Method method) {
-        try {
-            MonteScreenRecorder.startRecord(method.getName());
-        }
-        catch (Exception e ){
-            System.out.println("Failed to start video recording " + method.getName());
+        if(!getData("PlatformName").equalsIgnoreCase("api")){
+            try {
+                MonteScreenRecorder.startRecord(method.getName());
+            }
+            catch (Exception e ){
+                System.out.println("Failed to start video recording " + method.getName());
 
+            }
         }
+
     }
 
 }

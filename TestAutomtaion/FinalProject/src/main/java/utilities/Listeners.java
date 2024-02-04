@@ -30,31 +30,35 @@ public class Listeners extends CommonOps implements ITestListener {
     public void onTestSuccess(ITestResult test) {
         // TODO Auto-generated method stub
         System.out.println("Test Success....");
-        try {
-            MonteScreenRecorder.stopRecord();
-        } catch (java.lang.Exception e) {
-            throw new RuntimeException(e);
-        }
+        if(!getData("PlatformName").equalsIgnoreCase("api")) {
+            try {
+                MonteScreenRecorder.stopRecord();
+            } catch (java.lang.Exception e) {
+                throw new RuntimeException(e);
+            }
 
-        //Delete recorded file
-        File file = new File("./test-recordings/"+ test.getName() +".avi");
-        if (file.delete()){
-            System.out.println("Failed Deleted Successfully");
-        }
-        else {
-            System.out.println("Failed to Deleted File");
+            //Delete recorded file
+            File file = new File("./test-recordings/" + test.getName() + ".avi");
+            if (file.delete()) {
+                System.out.println("Failed Deleted Successfully");
+            } else {
+                System.out.println("Failed to Deleted File");
+            }
         }
     }
 
     public void onTestFailure(ITestResult test) {
         // TODO Auto-generated method stub
         System.out.println("Test Failed....");
-        try {
-            MonteScreenRecorder.stopRecord();
-        } catch (java.lang.Exception e) {
-            throw new RuntimeException(e);
+        if(!getData("PlatformName").equalsIgnoreCase("api")) {
+            //Stop recording
+            try {
+                MonteScreenRecorder.stopRecord();
+            } catch (java.lang.Exception e) {
+                throw new RuntimeException(e);
+            }
+            takeScreenshot();
         }
-        takeScreenshot();
     }
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult test) {

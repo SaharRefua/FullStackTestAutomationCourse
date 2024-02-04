@@ -14,7 +14,7 @@ public class LoginPage {
     @FindBy(how = How.CSS , using="button[type='submit']")
     public WebElement btn_login;
 
-    @FindBy(how = How.CSS , using="button[class='css-bhnz0e-button']")
+    @FindBy(how = How.CSS , using="a[class='btn btn-link']")
     public WebElement btn_skip;
 
 }

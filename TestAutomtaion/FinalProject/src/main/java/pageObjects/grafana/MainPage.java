@@ -8,7 +8,7 @@ import java.util.List;
 
 public class MainPage {
 
-    @FindBy(how = How.CSS , using= "h6[title='Dashboards']")
+    @FindBy(how = How.CSS , using= "//div[@class='text-center dashboard-header']/span")
     public WebElement head_dashboard;
 
     @FindBy(how = How.CSS , using= "a[class='css-1xmv57m']")
