@@ -15,6 +15,7 @@
         <module>FinalProject</module>
         <module>Appium</module>
         <module>RestAPI</module>
+        <module>Desktop</module>
     </modules>
     <repositories>
         <repository>

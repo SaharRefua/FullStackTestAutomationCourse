@@ -158,7 +158,7 @@ public class CommonOps extends Base {
     @AfterClass
     public void closeSession() {
         if(!getData("PlatformName").equalsIgnoreCase("api")) {
-            if (!getData("PlatformName").equalsIgnoreCase("web"))
+            if (getData("PlatformName").equalsIgnoreCase("web"))
                 driver.quit();
             else
                 mobileDriver.quit();

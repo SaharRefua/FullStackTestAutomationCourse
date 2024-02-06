@@ -2,7 +2,7 @@
 <Envirement>
     <!-- Timeout -->
     <Timeout>7</Timeout>
-    <PlatformName>api</PlatformName>
+    <PlatformName>web</PlatformName>
     <!-- Authorization -->
     <UserName>admin</UserName>
     <Password>admin</Password>
