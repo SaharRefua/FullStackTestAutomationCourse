@@ -10,18 +10,21 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.sikuli.script.Screen;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import workflows.ElectronFlows;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -80,8 +83,20 @@ public class CommonOps extends Base {
 //        driver.get("http://localhost:3000/");
         driver.get(getData("URL"));
         driver.manage().timeouts().implicitlyWait(Long.parseLong(getData("Timeout")), java.util.concurrent.TimeUnit.SECONDS);
-        action = new Actions(driver);
 
+
+    }
+
+    public static void initElectron(){
+        System.setProperty("webdriver.chrome.driver",getData("ElectronDriverPath"));
+        ChromeOptions opt = new ChromeOptions();
+        opt.setBinary(getData("ElectronAppPath"));
+        dc.setCapability("chromeOptions",opt);
+        dc.setBrowserName("chrome");
+        driver= new ChromeDriver(dc);
+        ManagePages.initToDO();
+        wait = new WebDriverWait(driver, Long.parseLong(getData("Timeout")));
+        driver.manage().timeouts().implicitlyWait(Long.parseLong(getData("Timeout")), java.util.concurrent.TimeUnit.SECONDS);
     }
     public static  void initMobile(){
         dc.setCapability(MobileCapabilityType.UDID,getData("UDID") );
@@ -137,9 +152,9 @@ public class CommonOps extends Base {
         else if (getData("PlatformName").equalsIgnoreCase("mobile")){
             initMobile();
         }
-//        else if (platform.equalsIgnoreCase("electron")){
-//            initElectron();
-//        }
+        else if (getData("PlatformName").equalsIgnoreCase("electron")){
+            initElectron();
+        }
         else if (getData("PlatformName").equalsIgnoreCase("api")){
             initAPI();
         }
@@ -148,6 +163,7 @@ public class CommonOps extends Base {
         }
         softAssert = new SoftAssert();
         screen = new Screen();
+        action = new Actions(driver);
     }
 
     public static void initAPI(){
@@ -158,10 +174,21 @@ public class CommonOps extends Base {
     @AfterClass
     public void closeSession() {
         if(!getData("PlatformName").equalsIgnoreCase("api")) {
-            if (getData("PlatformName").equalsIgnoreCase("web"))
-                driver.quit();
-            else
+            if (getData("PlatformName").equalsIgnoreCase("mobile") )
                 mobileDriver.quit();
+            else
+                driver.quit();
+
+        }
+    }
+    @AfterMethod
+    public void afterMethod() {
+        if(getData("PlatformName").equalsIgnoreCase("web")) {
+
+            driver.get(getData("url"));
+        }
+        else if (getData("PlatformName").equalsIgnoreCase("electron")){
+            ElectronFlows.emptyList();
         }
     }
     @BeforeMethod

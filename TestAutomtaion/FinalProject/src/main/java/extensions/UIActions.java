@@ -2,6 +2,7 @@ package extensions;
 
 import com.google.common.util.concurrent.Uninterruptibles;
 import io.qameta.allure.Step;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,6 +20,11 @@ public class UIActions extends CommonOps {
     public static void updateText(WebElement elem, String text){
         wait.until(ExpectedConditions.visibilityOf(elem));
         elem.sendKeys(text);
+    }
+
+    @Step("Insert key")
+    public static void insertKey(WebElement elem, Keys value ){
+        elem.sendKeys(value);
     }
 
     @Step("Update text element as human user")
@@ -43,6 +49,9 @@ public class UIActions extends CommonOps {
     }
     public static void mouseHover(WebElement elem1, WebElement elem2){
         action.moveToElement(elem1).moveToElement(elem2).click().build().perform();
+    }
+    public static void mouseHover(WebElement elem1){
+        action.moveToElement(elem1).click().build().perform();
     }
 
 }

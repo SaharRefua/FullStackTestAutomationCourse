@@ -34,7 +34,7 @@ public class Base { // init global objects
     protected  static JSONObject params = new JSONObject();
 
     protected  static JsonPath jp;
-    // Page Objects
+    // Page Objects - Web
     protected  static pageObjects.grafana.LoginPage grafanaLogin;
     protected  static pageObjects.grafana.MainPage grafanaMain;
     protected  static pageObjects.grafana.LeftMenuPage grafanaLeftMenu;
@@ -44,6 +44,7 @@ public class Base { // init global objects
 
     // Page Objects - Mobile
     protected  static pageObjects.mortgage.MainPage mortgageMain;
-
+    // Page Objects - Electron
+    protected  static pageObjects.todo.MainPage todoMain;
 
 }

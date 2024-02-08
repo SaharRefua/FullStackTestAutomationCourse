@@ -2,7 +2,7 @@
 <Envirement>
     <!-- Timeout -->
     <Timeout>7</Timeout>
-    <PlatformName>web</PlatformName>
+    <PlatformName>electron</PlatformName>
     <!-- Authorization -->
     <UserName>admin</UserName>
     <Password>admin</Password>
@@ -22,7 +22,8 @@
 
     <!-- API -->
     <urlAPI>http://localhost:3000</urlAPI>
-
-
+    <!-- Electron -->
+    <ElectronDriverPath>C:/Users/Sahar/code/FullStackTestAutomationCourse/TestAutomtaion/Drivers/electrondriver.exe</ElectronDriverPath>
+    <ElectronAppPath>C:/Users/Sahar/AppData/Local/Programs/todolist/Todolist.exe</ElectronAppPath>
 </Envirement>
 

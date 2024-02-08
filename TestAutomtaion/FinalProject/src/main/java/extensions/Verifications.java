@@ -49,10 +49,8 @@ public class Verifications  extends CommonOps {
         assertFalse(elems.size() >0);
     }
     @Step("Verify Text with Text")
-    public static void verifyText(String actual, String expected ){
-        assertEquals(actual, expected);
-
-    }
-
+    public static void verifyText(String actual, String expected ){assertEquals(actual, expected);}
+    @Step("Verify Number with Number")
+    public static void verifyNumber(int actual, int expected ){assertEquals(actual, expected);}
 
 }
