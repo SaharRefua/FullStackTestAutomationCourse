@@ -5,8 +5,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 public class EditUserPage {
-    @FindBy(how = How.XPATH ,using="//div[@class='css-wxwti7']/button[@class='css-ttl745-button']")
+    @FindBy(how = How.XPATH ,using="//div[@class=\"gf-form-button-row\"]/button[@class=\"btn btn-danger\"][2]")
     public WebElement btn_deleteUser;
-    @FindBy(how = How.XPATH ,using="//button[@data-testid='data-testid Confirm Modal Danger Button']")
+    @FindBy(how = How.XPATH ,using="//button[@ng-click=\"onConfirm();dismiss();\"]")
     public WebElement btn_confirmDeleteUser;
+    @FindBy(how = How.XPATH ,using="//input[@ng-model=\"user.login\"]")
+    public WebElement btn_userTitle;
+
 }

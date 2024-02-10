@@ -9,10 +9,10 @@
     <!-- Web -->
     <BrowserName>chrome</BrowserName>
     <URL>http://localhost:3000</URL>
-    <ImageRepo>/Users/sahar.refua/saharR/FullStackTestAutomationCourse/TestAutomtaion/ImageRepository/</ImageRepo>
+    <ImageRepo>C:/Users/Sahar/code/FullStackTestAutomationCourse/TestAutomtaion/ImageRepository</ImageRepo>
 
     <!-- Data driven testing -->
-    <DDT_CSV_File>/Users/sahar.refua/saharR/FullStackTestAutomationCourse/TestAutomtaion/DDTFiles/Users.csv/</DDT_CSV_File>
+    <DDT_CSV_File>C:/Users/Sahar/code/FullStackTestAutomationCourse/TestAutomtaion/DDTFiles/Users.csv/</DDT_CSV_File>
 
     <!-- Mobile -->
     <UDID>ce06171675fb030102</UDID>

@@ -6,16 +6,16 @@ import org.openqa.selenium.support.How;
 
 public class AddNewUserPage {
 
-    @FindBy(how = How.ID ,using="name-input")
+    @FindBy(how = How.CSS ,using="input[ng-model='user.name']")
     public WebElement txt_name;
-    @FindBy(how = How.ID ,using="email-input")
+    @FindBy(how = How.CSS ,using="input[ng-model='user.email']")
     public WebElement txt_email;
-    @FindBy(how = How.ID ,using="username-input")
+    @FindBy(how = How.CSS ,using="input[ng-model='user.login']")
     public WebElement txt_username;
-    @FindBy(how = How.ID ,using="password-input")
+    @FindBy(how = How.CSS ,using="input[ng-model='user.password']")
     public WebElement txt_password;
 
-    @FindBy(how = How.CSS ,using="button[class='css-td06pi-button']")
+    @FindBy(how = How.CSS ,using="button[class='btn btn-primary']")
     public WebElement btn_createUser;
 
     @FindBy(how = How.CSS ,using="a[data-testid='data-testid Users breadcrumb']")

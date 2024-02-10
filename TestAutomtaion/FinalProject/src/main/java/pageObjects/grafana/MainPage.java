@@ -11,6 +11,6 @@ public class MainPage {
     @FindBy(how = How.XPATH , using= "//div[@class='text-center dashboard-header']/span")
     public WebElement head_dashboard;
 
-    @FindBy(how = How.CSS , using= "a[class='css-1xmv57m']")
+    @FindBy(how = How.CSS , using= "a[class=\"progress-link\"]")
     public List<WebElement> list_progressSteps;
 }

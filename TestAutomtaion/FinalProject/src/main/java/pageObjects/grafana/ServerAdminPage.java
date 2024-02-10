@@ -7,14 +7,14 @@ import org.openqa.selenium.support.How;
 import java.util.List;
 
 public class ServerAdminPage {
-    @FindBy(how = How.CSS ,using="a[class='css-td06pi-button']")
+    @FindBy(how = How.CSS ,using="a[class='btn btn-primary']")
     public WebElement btn_newUser;
     @FindBy(how = How.XPATH ,using="//a[@href='/admin/users']")
     public WebElement link_users;
 
-    @FindBy(how = How.CSS, using= "tr[class='css-1e8ylo6-row']")
+    @FindBy(how = How.CSS, using= "tr[ng-repeat='user in ctrl.users']")
     public List<WebElement> rows;
-    @FindBy(how = How.XPATH, using= "//tr[@class='css-1e8ylo6-row']/td/a")
+    @FindBy(how = How.XPATH, using= "//tr[@ng-repeat='user in ctrl.users']")
     public List<WebElement> editUserLinks;
 
     @FindBy(how = How.XPATH , using= "//a[@href='/admin/orgs']")
@@ -22,7 +22,7 @@ public class ServerAdminPage {
 
     @FindBy(how = How.XPATH , using= "//a[@href='/admin/settings']")
     public WebElement link_settings;
-    @FindBy(how = How.CSS , using= "input[class='css-8tk2dk-input-input']")
+    @FindBy(how = How.CSS , using= "input[placeholder=\"Find user by name/login/email\"]")
     public WebElement txt_search;
 
 

@@ -23,14 +23,21 @@ public class WebFlows extends CommonOps {
         UIActions.updateText(grafanaAddNewUser.txt_password, pass);
         UIActions.updateText(grafanaAddNewUser.txt_username, user);
         UIActions.click(grafanaAddNewUser.btn_createUser);
-        UIActions.click(grafanaAddNewUser.btn_userHeaderLink);
+//        UIActions.click(grafanaAddNewUser.btn_userHeaderLink);
     }
 
     @Step("Delete last user")
     public static void deleteLastUser() {
         UIActions.click(grafanaServerAdmin.editUserLinks.get(grafanaServerAdmin.editUserLinks.size() - 1));
-        UIActions.click(grafanaEditUser.btn_deleteUser);
-        UIActions.click(grafanaEditUser.btn_confirmDeleteUser);
+        if (!"admin".equals(grafanaEditUser.btn_userTitle.getText())){
+            System.out.println("Delete user: "+ grafanaEditUser.btn_userTitle.getText());
+            UIActions.click(grafanaEditUser.btn_deleteUser);
+            UIActions.click(grafanaEditUser.btn_confirmDeleteUser);
+        }
+        else {
+            System.out.println("Last user in users list is admin can't delete admin ");
+        }
+
     }
 
     @Step("Search and verify user")
