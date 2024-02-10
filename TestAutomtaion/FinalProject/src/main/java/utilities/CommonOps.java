@@ -4,6 +4,7 @@ import Lesson13.MonteScreenRecorder;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
+import io.appium.java_client.windows.WindowsDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.restassured.RestAssured;
 import org.openqa.selenium.Dimension;
@@ -30,9 +31,11 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.lang.reflect.Method;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 
 public class CommonOps extends Base {
@@ -83,7 +86,7 @@ public class CommonOps extends Base {
 //        driver.get("http://localhost:3000/");
         driver.get(getData("URL"));
         driver.manage().timeouts().implicitlyWait(Long.parseLong(getData("Timeout")), java.util.concurrent.TimeUnit.SECONDS);
-
+        action = new Actions(driver);
 
     }
 
@@ -98,30 +101,31 @@ public class CommonOps extends Base {
         wait = new WebDriverWait(driver, Long.parseLong(getData("Timeout")));
         driver.manage().timeouts().implicitlyWait(Long.parseLong(getData("Timeout")), java.util.concurrent.TimeUnit.SECONDS);
     }
+    public static void initDesktop() throws MalformedURLException {
+        dc.setCapability("app",getData("CalculatorApp"));
+       try{
+           driver= new WindowsDriver(new URL("AppiumServer"),dc);
+
+       }
+       catch (Exception e){
+           System.out.println("Can not Connect to Appium Server,See Detailed: "+ e);
+       }
+
+    }
     public static  void initMobile(){
         dc.setCapability(MobileCapabilityType.UDID,getData("UDID") );
         dc.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, getData("AppPackage"));
         dc.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, getData("AppActivity"));
         try{
-//            mobileDriver = new AndroidDriver<>(new URL((getData("AppiumServer"))), dc);
-            mobileDriver = new AndroidDriver<> (new URL(getData("AppiumServer")), dc);
+            mobileDriver = new AndroidDriver(new URL(getData("AppiumServer")), dc);
         }
         catch (Exception e){
             System.out.println("Can not connect to Appium Server, see details: " + e);
         }
         ManagePages.initMortgage();
-
-        mobileDriver.manage().timeouts().implicitlyWait(Long.parseLong(Objects.requireNonNull(getData("Timeout"))), java.util.concurrent.TimeUnit.SECONDS);
-        // wait = new WebDriverWait(mobileDriver, Long.parseLong(getData("Timeout")));
-        // Your long value representing timeout in seconds
-        long timeoutInSeconds = Long.parseLong(getData("Timeout"));
-
-        // Convert the long value to a Duration object
-        Duration timeoutDuration = Duration.ofSeconds(timeoutInSeconds);
-        long durationInMillis = timeoutDuration.toMillis();
-        // Create WebDriverWait with the specified timeout
-        wait = new WebDriverWait(mobileDriver, durationInMillis);
-
+        mobileDriver.manage().timeouts().implicitlyWait(Long.parseLong(getData("Timeout")), TimeUnit.SECONDS);
+        wait = new WebDriverWait(mobileDriver, Long.parseLong(getData("Timeout")));
+        action = new Actions(mobileDriver);
     }
 
     public static WebDriver initChromeDriver() {
@@ -158,12 +162,15 @@ public class CommonOps extends Base {
         else if (getData("PlatformName").equalsIgnoreCase("api")){
             initAPI();
         }
+//        else if (getData("PlatformName").equalsIgnoreCase("desktop")){
+//            initDesktop();
+//        }
         else {
             throw new RuntimeException("Invalid platform name stated");
         }
         softAssert = new SoftAssert();
         screen = new Screen();
-        action = new Actions(driver);
+
     }
 
     public static void initAPI(){
@@ -185,7 +192,7 @@ public class CommonOps extends Base {
     public void afterMethod() {
         if(getData("PlatformName").equalsIgnoreCase("web")) {
 
-            driver.get(getData("url"));
+            driver.get(getData("URL"));
         }
         else if (getData("PlatformName").equalsIgnoreCase("electron")){
             ElectronFlows.emptyList();

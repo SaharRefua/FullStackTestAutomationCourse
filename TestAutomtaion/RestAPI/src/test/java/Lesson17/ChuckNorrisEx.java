@@ -1,18 +1,30 @@
 package Lesson17;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import static org.bouncycastle.asn1.x500.style.RFC4519Style.o;
 import static org.testng.AssertJUnit.assertEquals;
 
 public class ChuckNorrisEx {
     public static RequestSpecification request;
     public static Response response;
     final String baseURL = "https://api.chucknorris.io";
+    protected WebDriver driver;
     String[][] data;
     JsonPath jp;
 
@@ -53,14 +65,51 @@ public class ChuckNorrisEx {
     }
 
     @Test
-    public void Test03_SaveJokes() {
+    public void Test03_SaveJokes() throws IOException {
+        for (int i=0;i<10;i++){
+            response = request.get("/jokes/random");
+            assertEquals(response.statusCode(), 200);
+            response.prettyPrint();
+            jp = response.jsonPath();
+            String url = jp.getString("url");
+            String value = jp.getString("value");
+            writeCSV(url,value);
 
-        response = request.get("/jokes/random");
-        assertEquals(response.statusCode(), 200);
-        response.prettyPrint();
-        jp = response.jsonPath();
-        String urls = jp.getString("result.url");
-        String values = jp.getString("result.value");
+            System.out.println(url);
+            System.out.println(value);
+        }
+
+    }
+    public void writeCSV(String url, String value) throws IOException {
+        FileWriter pw = new FileWriter("./results.csv",true);
+        StringBuilder sb = new StringBuilder();
+        sb.append(url);
+        sb.append(',');
+        sb.append(value.replace(",", ""));
+        sb.append('\n');
+        pw.write(sb.toString());
+        pw.close();
+    }
+
+    @Test
+    public void Test04_SaveJokes() throws IOException {
+            response = request.get("/jokes/random?category=movie");
+            assertEquals(response.statusCode(), 200);
+            response.prettyPrint();
+            jp = response.jsonPath();
+            String url = jp.getString("url");
+            String value = jp.getString("value");
+            System.out.println(url);
+            System.out.println(value);
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver();
+            driver.manage().window().maximize();
+            driver.get(url);
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            String joke = driver.findElement(By.xpath("//p[@id='joke_value']")).getText();
+            System.out.println(joke);
+            assertEquals(joke,value);
+            driver.quit();
 
     }
 }

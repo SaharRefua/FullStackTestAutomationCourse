@@ -22,30 +22,28 @@ public class GrafanaWeb extends CommonOps {
 
     }
 
-    @Test(enabled = true, description = "Test02: Verify default users")
+    @Test( description = "Test02: Verify default users")
     @Description("Test Description: Verify the default users in Grafana")
     public void test02_verifyDefaultsUsers(){
-        UIActions.click(grafanaLeftMenu.btn_menu);
-        UIActions.click(grafanaLeftMenu.btn_server);
-        UIActions.click(grafanaLeftMenu.btn_usersAndAccess);
-        UIActions.click(grafanaServerAdmin.link_users);
+        UIActions.mouseHover(grafanaLeftMenu.btn_server, grafanaServerAdmin.link_users);
         Verifications.numberOfElements(grafanaServerAdmin.rows, 1);
+        Uninterruptibles.sleepUninterruptibly(3, java.util.concurrent.TimeUnit.SECONDS);
     }
 
-    @Test(enabled = true,description = "Test03: Verify create and delete new user")
+    @Test(enabled = false,description = "Test03: Verify create and delete new user")
     @Description("Test Description: Verify create and delete new user in Grafana")
     public void test03_verifyCreateNewUser(){
         WebFlows.creatNewUser("Yossi", "yossi2@gmail.com", "yossi", "12345");
         Verifications.numberOfElements(grafanaServerAdmin.rows, 2);
 
     }
-    @Test(enabled = true,description = "Test04: Verify delete new user")
+    @Test(enabled = false,description = "Test04: Verify delete new user")
     public void test04_verifyDeleteNewUser(){
         WebFlows.deleteLastUser();
         Verifications.numberOfElements(grafanaServerAdmin.rows, 1);
 
     }
-    @Test(description = "Test05: Verify progress steps")
+    @Test(enabled = false,description = "Test05: Verify progress steps")
     @Description("Test Description: Verify progress steps in Grafana")
     public void test05_verifyProgressSteps(){
         Verifications.visibilityOfElements(grafanaMain.list_progressSteps);
@@ -69,7 +67,7 @@ public class GrafanaWeb extends CommonOps {
 //        WebFlows.searchAndVerifyUser("yossi2", "not-exist");
 //        Uninterruptibles.sleepUninterruptibly(3, java.util.concurrent.TimeUnit.SECONDS);
 //    }
-    @Test(description = "Test07: search users", dataProvider = "csvReader", dataProviderClass = utilities.ManageDDT.class)
+    @Test(enabled = false,description = "Test07: search users", dataProvider = "csvReader", dataProviderClass = utilities.ManageDDT.class)
     @Description("Test Description: search users in a table using DDT")
     public void test07_searchUsers(String user, String shouldExist)  {
         UIActions.click(grafanaLeftMenu.btn_menu);

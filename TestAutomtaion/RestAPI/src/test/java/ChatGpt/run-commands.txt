@@ -1,0 +1,8 @@
+link to docs:https://platform.openai.com/docs/api-reference
+
+"print todays date using java class" "TodaysDate"
+"create a generic login class with selenium webdriver and @FindBy annotation" "LoginPage"
+"create a generic login class with page objects using selenium webdriver and testng and @FindBy annotation " "LoginPage"
+"create a login class for site: https://www.saucedemo.com/ with page objects using selenium webdriver and testng and @FindBy annotation and allure @Step" "LoginPage"
+"Enter https://www.saucedemo.com/ and login - standard_user and secret_sauce and  that print products  in second page using page object and @FindBy and allure @Step on second page only" "HomePage"
+

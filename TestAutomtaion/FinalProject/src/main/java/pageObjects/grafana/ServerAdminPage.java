@@ -9,7 +9,7 @@ import java.util.List;
 public class ServerAdminPage {
     @FindBy(how = How.CSS ,using="a[class='css-td06pi-button']")
     public WebElement btn_newUser;
-    @FindBy(how = How.XPATH ,using="//div[@class='css-ulujq6'][1]")
+    @FindBy(how = How.XPATH ,using="//a[@href='/admin/users']")
     public WebElement link_users;
 
     @FindBy(how = How.CSS, using= "tr[class='css-1e8ylo6-row']")
@@ -17,10 +17,10 @@ public class ServerAdminPage {
     @FindBy(how = How.XPATH, using= "//tr[@class='css-1e8ylo6-row']/td/a")
     public List<WebElement> editUserLinks;
 
-    @FindBy(how = How.XPATH , using= "//a[href='/admin/orgs']")
+    @FindBy(how = How.XPATH , using= "//a[@href='/admin/orgs']")
     public WebElement link_orgs;
 
-    @FindBy(how = How.XPATH , using= "//a[href='/admin/settings']")
+    @FindBy(how = How.XPATH , using= "//a[@href='/admin/settings']")
     public WebElement link_settings;
     @FindBy(how = How.CSS , using= "input[class='css-8tk2dk-input-input']")
     public WebElement txt_search;

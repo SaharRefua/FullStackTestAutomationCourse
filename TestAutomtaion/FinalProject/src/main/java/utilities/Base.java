@@ -25,15 +25,13 @@ public class Base { // init global objects
 
     //Mobile
     protected  static AppiumDriver mobileDriver;
-
     protected  static DesiredCapabilities dc = new DesiredCapabilities();
     //Rest API
     protected  static RequestSpecification httpRequest;
     protected  static Response response;
-
     protected  static JSONObject params = new JSONObject();
-
     protected  static JsonPath jp;
+
     // Page Objects - Web
     protected  static pageObjects.grafana.LoginPage grafanaLogin;
     protected  static pageObjects.grafana.MainPage grafanaMain;
@@ -44,6 +42,7 @@ public class Base { // init global objects
 
     // Page Objects - Mobile
     protected  static pageObjects.mortgage.MainPage mortgageMain;
+
     // Page Objects - Electron
     protected  static pageObjects.todo.MainPage todoMain;
 
