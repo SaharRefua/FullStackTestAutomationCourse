@@ -3,10 +3,11 @@ package sanity;
 import extensions.ApiActions;
 import extensions.Verifications;
 import jdk.jfr.Description;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import utilities.CommonOps;
 import workflows.ApiFlows;
-
+@Listeners(utilities.Listeners.class)
 public class GrafanaAPI extends CommonOps {
     @Test(description = "Test 01: Get Team From Grafana")
     @Description("This Test Verify Team Property")

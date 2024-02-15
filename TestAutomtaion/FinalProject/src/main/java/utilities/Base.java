@@ -46,4 +46,7 @@ public class Base { // init global objects
     // Page Objects - Electron
     protected  static pageObjects.todo.MainPage todoMain;
 
+    // Page Objects - Desktop
+    protected static pageObjects.calculator.MainPage calcMain;
+
 }

@@ -2,11 +2,11 @@ package sanity;
 
 import extensions.Verifications;
 import io.qameta.allure.Description;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import utilities.CommonOps;
 import workflows.ElectronFlows;
-import workflows.WebFlows;
-
+@Listeners(utilities.Listeners.class)
 public class TodoListElectron extends CommonOps {
 
     @Test(description = "Test01: Add And Verify New Task")

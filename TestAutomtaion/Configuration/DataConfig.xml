@@ -2,7 +2,7 @@
 <Envirement>
     <!-- Timeout -->
     <Timeout>7</Timeout>
-    <PlatformName>web</PlatformName>
+    <PlatformName>desktop</PlatformName>
     <!-- Authorization -->
     <UserName>admin</UserName>
     <Password>admin</Password>
@@ -28,6 +28,7 @@
 
     <!-- Desktop -->
     <CalculatorApp>Microsoft.WindowsCalculator_8wekyb3d8bbwe!App</CalculatorApp>
+    <AppiumServerDesktop>http://127.0.0.1:4723</AppiumServerDesktop>
 
 </Envirement>
 

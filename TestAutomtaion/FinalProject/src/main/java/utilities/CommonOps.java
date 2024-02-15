@@ -87,7 +87,6 @@ public class CommonOps extends Base {
         driver.get(getData("URL"));
         driver.manage().timeouts().implicitlyWait(Long.parseLong(getData("Timeout")), java.util.concurrent.TimeUnit.SECONDS);
         action = new Actions(driver);
-
     }
 
     public static void initElectron(){
@@ -101,16 +100,18 @@ public class CommonOps extends Base {
         wait = new WebDriverWait(driver, Long.parseLong(getData("Timeout")));
         driver.manage().timeouts().implicitlyWait(Long.parseLong(getData("Timeout")), java.util.concurrent.TimeUnit.SECONDS);
     }
+
     public static void initDesktop() throws MalformedURLException {
         dc.setCapability("app",getData("CalculatorApp"));
        try{
-           driver= new WindowsDriver(new URL("AppiumServer"),dc);
-
+           driver= new WindowsDriver(new URL(getData("AppiumServerDesktop")),dc);
        }
        catch (Exception e){
            System.out.println("Can not Connect to Appium Server,See Detailed: "+ e);
        }
-
+        driver.manage().timeouts().implicitlyWait(Long.parseLong(getData("Timeout")), TimeUnit.SECONDS);
+        wait = new WebDriverWait(driver, Long.parseLong(getData("Timeout")));
+       ManagePages.initCalculator();
     }
     public static  void initMobile(){
         dc.setCapability(MobileCapabilityType.UDID,getData("UDID") );
@@ -147,7 +148,7 @@ public class CommonOps extends Base {
     }
 
     @BeforeClass
-    public void startSession() {
+    public void startSession() throws MalformedURLException {
         //String platform = "web"; //System.getProperty("platformName");
 
         if (getData("PlatformName").equalsIgnoreCase("web")) {
@@ -162,9 +163,9 @@ public class CommonOps extends Base {
         else if (getData("PlatformName").equalsIgnoreCase("api")){
             initAPI();
         }
-//        else if (getData("PlatformName").equalsIgnoreCase("desktop")){
-//            initDesktop();
-//        }
+        else if (getData("PlatformName").equalsIgnoreCase("desktop")){
+            initDesktop();
+        }
         else {
             throw new RuntimeException("Invalid platform name stated");
         }
