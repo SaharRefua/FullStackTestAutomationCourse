@@ -17,10 +17,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.sikuli.script.Screen;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -147,23 +144,25 @@ public class CommonOps extends Base {
         return driver;
     }
 
+    @Parameters({"PlatformName"})
     @BeforeClass
-    public void startSession() throws MalformedURLException {
+    public void startSession(String PlatformName) throws MalformedURLException {
         //String platform = "web"; //System.getProperty("platformName");
+        Platform = PlatformName;
 
-        if (getData("PlatformName").equalsIgnoreCase("web")) {
+        if (Platform.equalsIgnoreCase("web")) {
             initBrowser("chrome");
         }
-        else if (getData("PlatformName").equalsIgnoreCase("mobile")){
+        else if (Platform.equalsIgnoreCase("mobile")){
             initMobile();
         }
-        else if (getData("PlatformName").equalsIgnoreCase("electron")){
+        else if (Platform.equalsIgnoreCase("electron")){
             initElectron();
         }
-        else if (getData("PlatformName").equalsIgnoreCase("api")){
+        else if (Platform.equalsIgnoreCase("api")){
             initAPI();
         }
-        else if (getData("PlatformName").equalsIgnoreCase("desktop")){
+        else if (Platform.equalsIgnoreCase("desktop")){
             initDesktop();
         }
         else {
@@ -181,8 +180,8 @@ public class CommonOps extends Base {
 
     @AfterClass
     public void closeSession() {
-        if(!getData("PlatformName").equalsIgnoreCase("api")) {
-            if (getData("PlatformName").equalsIgnoreCase("mobile") )
+        if(!Platform.equalsIgnoreCase("api")) {
+            if (Platform.equalsIgnoreCase("mobile") )
                 mobileDriver.quit();
             else
                 driver.quit();
@@ -191,17 +190,17 @@ public class CommonOps extends Base {
     }
     @AfterMethod
     public void afterMethod() {
-        if(getData("PlatformName").equalsIgnoreCase("web")) {
+        if(Platform.equalsIgnoreCase("web")) {
 
             driver.get(getData("URL"));
         }
-        else if (getData("PlatformName").equalsIgnoreCase("electron")){
+        else if (Platform.equalsIgnoreCase("electron")){
             ElectronFlows.emptyList();
         }
     }
     @BeforeMethod
     public void beforeMethod(Method method) {
-        if(!getData("PlatformName").equalsIgnoreCase("api")){
+        if(!Platform.equalsIgnoreCase("api")){
             try {
                 MonteScreenRecorder.startRecord(method.getName());
             }

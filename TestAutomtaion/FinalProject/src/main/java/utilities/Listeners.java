@@ -30,7 +30,7 @@ public class Listeners extends CommonOps implements ITestListener {
     public void onTestSuccess(ITestResult test) {
         // TODO Auto-generated method stub
         System.out.println("Test Success....");
-        if(!getData("PlatformName").equalsIgnoreCase("api")) {
+        if(!Platform.equalsIgnoreCase("api")) {
             try {
                 MonteScreenRecorder.stopRecord();
             } catch (java.lang.Exception e) {
@@ -50,7 +50,7 @@ public class Listeners extends CommonOps implements ITestListener {
     public void onTestFailure(ITestResult test) {
         // TODO Auto-generated method stub
         System.out.println("Test Failed....");
-        if(!getData("PlatformName").equalsIgnoreCase("api")) {
+        if(!Platform.equalsIgnoreCase("api")) {
             //Stop recording
             try {
                 MonteScreenRecorder.stopRecord();
@@ -72,7 +72,7 @@ public class Listeners extends CommonOps implements ITestListener {
 
     @Attachment(value = "Page screenshot", type = "image/png")
     public byte[] takeScreenshot() {
-        if (getData("PlatformName").equalsIgnoreCase("web"))
+        if (Platform.equalsIgnoreCase("web"))
             return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
         else
             return ((TakesScreenshot) mobileDriver).getScreenshotAs(OutputType.BYTES);

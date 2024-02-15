@@ -19,6 +19,7 @@ public class Base { // init global objects
     protected  static WebDriverWait wait;
     protected  static SoftAssert softAssert;
     protected  static Screen screen;
+    protected static String Platform;
 
     //Web
     protected  static WebDriver driver;

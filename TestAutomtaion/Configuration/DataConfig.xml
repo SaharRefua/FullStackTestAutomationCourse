@@ -2,7 +2,7 @@
 <Envirement>
     <!-- Timeout -->
     <Timeout>7</Timeout>
-    <PlatformName>desktop</PlatformName>
+<!--    <PlatformName>desktop</PlatformName>-->
     <!-- Authorization -->
     <UserName>admin</UserName>
     <Password>admin</Password>
