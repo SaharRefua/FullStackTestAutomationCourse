@@ -8,10 +8,11 @@
 <!--        </packages>-->
         <classes>
             <class name="sanity.GrafanaWeb">
-<!--                <methods>-->
-<!--                    <include name="test01_verifyHeader"/>-->
-<!--                    <include name="test02_verifyDefaultsUsers"/>-->
-<!--                </methods>-->
+                <methods>
+                    <include name="test01_verifyHeader"/>
+                    <include name="test02_verifyDefaultsUsers"/>
+                    <include name="test07_searchUsers"/>
+                </methods>
             </class>
         </classes>
     </test>

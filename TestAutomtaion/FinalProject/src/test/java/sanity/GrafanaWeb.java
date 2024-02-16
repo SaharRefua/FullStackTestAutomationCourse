@@ -52,7 +52,7 @@ public class GrafanaWeb extends CommonOps {
     public void test06_verifyAvatarIcon() throws FindFailed {
         Verifications.visualElement("grafanaIcon");
     }
-    @Test(enabled = false,description = "Test07: search users", dataProvider = "csvReader", dataProviderClass = utilities.ManageDDT.class)
+    @Test(enabled = true,description = "Test07: search users", dataProvider = "csvReader", dataProviderClass = utilities.ManageDDT.class)
     @Description("Test Description: search users in a table using DDT")
     public void test07_searchUsers(String user, String shouldExist)  {
         UIActions.mouseHover(grafanaLeftMenu.btn_server, grafanaServerAdmin.link_users);

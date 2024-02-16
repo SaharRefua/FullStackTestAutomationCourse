@@ -34,7 +34,7 @@ public class UIActions extends CommonOps {
             Uninterruptibles.sleepUninterruptibly(500, java.util.concurrent.TimeUnit.MILLISECONDS);
             elem.sendKeys(ch + "");
         }
-        elem.sendKeys(text);
+//        elem.sendKeys(text);
     }
     @Step("Clear text element")
     public static void clearText(WebElement elem){

@@ -42,7 +42,7 @@ public class WebFlows extends CommonOps {
 
     @Step("Search and verify user")
     public static void searchAndVerifyUser(String user, String shouldExist) {
-        UIActions.updateText(grafanaServerAdmin.txt_search, user);
+        UIActions.updateTextHuman(grafanaServerAdmin.txt_search, user);
         if (shouldExist.equalsIgnoreCase("exist"))
             Verifications.existenceOfElement(grafanaServerAdmin.rows);
 

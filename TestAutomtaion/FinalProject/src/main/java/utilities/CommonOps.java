@@ -194,9 +194,9 @@ public class CommonOps extends Base {
 
             driver.get(getData("URL"));
         }
-        else if (Platform.equalsIgnoreCase("electron")){
-            ElectronFlows.emptyList();
-        }
+//        else if (Platform.equalsIgnoreCase("electron")){
+//            ElectronFlows.emptyList();
+//        }
     }
     @BeforeMethod
     public void beforeMethod(Method method) {
